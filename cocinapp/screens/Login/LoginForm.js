@@ -5,12 +5,18 @@ import {
     View,
     TouchableOpacity,
     Text,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Button
 } from 'react-native';
+import createStackNavigator from 'react-navigation';
+import Login from './Login';
 
-export default class Login extends React.Component {
-  render() {
-    return (
+class LoginForm extends React.Component {
+    static navigationOptions = {
+        header : null 
+    }
+    render() {
+        return (
         <View style={styles.container}>
             <KeyboardAvoidingView behavior='padding' style={styles.container}>
                 <TextInput 
@@ -19,7 +25,7 @@ export default class Login extends React.Component {
                     keyboardType= 'email-address'
                     returnKeyType= 'next'
                     style={styles.input}
-                    onSubmitEditing={()=> this.refs.txtPassword.focus()}
+                    //onSubmitEditing={()=> this.refs.txtPassword.focus()}
                 />
                 <TextInput 
                     placeholder="Password"
@@ -27,16 +33,17 @@ export default class Login extends React.Component {
                     returnKeyType= 'go'
                     sourceTextEntry
                     style={styles.input}
-                    refs={"textPassword"}
+                    //refs={"textPassword"}
                 />
-                <TouchableOpacity style={styles.buttonContainer}>
-                    <Text  style={styles.buttonText}> INGRESAR </Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <Button title= "INGRESAR" onPress={()=> this.props.navigation.navigate('DrawerNavigator')}/> 
+                </View>
             </KeyboardAvoidingView>
         </View>
     );
   }
 } 
+export default LoginForm;
 
 const styles = StyleSheet.create({
     container: {

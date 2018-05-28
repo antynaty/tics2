@@ -1,8 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView} from 'react-native';
-import LoginForm from './LoginForm';
+// import LoginForm from './LoginForm';
 
-export default class Login extends React.Component {
+export default class Splash extends React.Component {
+  static navigationOptions = {
+    header : null 
+  }
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -11,10 +14,7 @@ export default class Login extends React.Component {
                   style={styles.logo}
                   source={require('../../images/hat.png')} 
                 />
-                <Text style={styles.title}> CocinApp</Text>
-            </View>
-            <View style={styles.infoContainer}>
-                <LoginForm />
+            <Text style={styles.title}> CocinApp</Text>
             </View>
       </KeyboardAvoidingView>
     );
