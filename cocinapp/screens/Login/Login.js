@@ -18,17 +18,21 @@ class Login extends React.Component {
             <Text style={styles.title}> CocinApp</Text>
             </View>
             <View style={styles.infoContainer}>
-                <LoginForm />
+                <LoginForm  navigation={this.props.navigation} />
             </View>
       </KeyboardAvoidingView>
     );
   }
-}
+} 
+
+export default Login;
+/*
 export default createStackNavigator({
   Login: {
     screen : Login
   }
 }); 
+*/
 
 const styles = StyleSheet.create({
   container: {

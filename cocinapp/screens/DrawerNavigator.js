@@ -11,10 +11,16 @@ import {
 } from 'react-navigation';
 
 import Home from './Home/Home';
+import HomeScreenTabNavigator from './Home/HomeScreenTabNavigator';
 
-const AppDrawerNavigator = createDrawerNavigator({
+const InnerStackNavigator = createStackNavigator({ // en HOME las tabs de abajo
+    tabNavigator: { 
+        screen: HomeScreenTabNavigator
+    }
+});
+const AppDrawerNavigator = createDrawerNavigator({  // apunta a Home
     Home: {
-      screen: Home,
+      screen: InnerStackNavigator,
     }
 });
 

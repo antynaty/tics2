@@ -6,6 +6,14 @@ export default class Splash extends React.Component {
   static navigationOptions = {
     header : null 
   }
+  constructor(props){
+    super(props)
+    this.state = {timer: 0}
+    setInterval ( ()=> {
+      this.setState({timer: this.state.timer + 1})
+    },100)
+  }
+  
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>

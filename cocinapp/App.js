@@ -9,7 +9,6 @@ import {
 import {createStackNavigator} from 'react-navigation';
 import Login from './screens/Login/Login';
 import Splash from './screens/Splash/Splash';
-import Home from './screens/Home/Home';  // deberia irse
 import LoginForm from './screens/Login/LoginForm';
 import DrawerNavigator from './screens/DrawerNavigator';
 
@@ -17,27 +16,26 @@ import DrawerNavigator from './screens/DrawerNavigator';
 export default class App extends React.Component {
   render() {
     return (
-      //<RootStack />
-      <Home/>
+      <RootStack />
+      //<Splash/>
     );
   }
 }
 const RootStack = createStackNavigator({
-  /* Splash : {
-    screen : Splash
-  },
-  */ 
+  // Splash : {
+  //   screen : Splash
+  // },
   Login : {
     screen : Login
   },
   LoginForm : {
     screen : LoginForm
   },
-  Home : {
-   screen : Home 
-  },
   DrawerNavigator :{
     screen : DrawerNavigator
   }
-
+}, { 
+  navigationOptions:{
+    gesturesEnable: false
+  }
 })

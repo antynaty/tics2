@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
                     keyboardType= 'email-address'
                     returnKeyType= 'next'
                     style={styles.input}
-                    //onSubmitEditing={()=> this.refs.txtPassword.focus()}
+                    onSubmitEditing={()=> this.refs.txtPassword.focus()}
                 />
                 <TextInput 
                     placeholder="Password"
@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
                     returnKeyType= 'go'
                     sourceTextEntry
                     style={styles.input}
-                    //refs={"textPassword"}
+                    refs={"textPassword"}
                 />
                 <View style={styles.buttonContainer}>
                     <Button title= "INGRESAR" onPress={()=> this.props.navigation.navigate('DrawerNavigator')}/> 
