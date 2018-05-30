@@ -9,7 +9,7 @@ export default class Profile extends React.Component {
   render() {
     return (
         <View style= {styles.container}>
-            <Text> Screen one </Text>
+            <Text> Screen Profile </Text>
         </View>
     );
   }

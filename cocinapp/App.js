@@ -32,7 +32,10 @@ const RootStack = createStackNavigator({
     screen : LoginForm
   },
   DrawerNavigator :{
-    screen : DrawerNavigator
+    screen : DrawerNavigator,
+    navigationOptions: {
+      header: null 
+    }
   }
 }, { 
   navigationOptions:{
