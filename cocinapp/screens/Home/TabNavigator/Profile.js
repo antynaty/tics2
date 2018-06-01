@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         position:'absolute',
+        backgroundColor: '#F7F8E0',
         left: 0,
         right:0,
         bottom:2

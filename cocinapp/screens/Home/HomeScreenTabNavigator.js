@@ -5,7 +5,7 @@ import {
     View
 } from 'react-native';
 import { 
-    createTabNavigator,
+    createBottomTabNavigator,
     createDrawerNavigator
 } from 'react-navigation';
 
@@ -22,8 +22,7 @@ export default class AppTabNavigator extends React.Component {
         return {
             headerLeft:(
                 <View style= {{padding:10 }} >
-                    <Ionicons name='md-menu' size={24} onPress={()=> navigation.navigate
-                    ('DrawerOpen') }/>
+                    <Ionicons name='md-menu' size={24} onPress={()=> navigation.openDrawer() }/>
                 </View> 
             )
         }
@@ -35,23 +34,37 @@ export default class AppTabNavigator extends React.Component {
     }
   }
 
-const HomeScreenTabNavigator = createTabNavigator ({
+const HomeScreenTabNavigator = createBottomTabNavigator ({
     Profile : {
         screen: Profile,
-        navigationOptions:{
-            tabBarLabel:'Profile',
-            tabBarIcon:()=> {
-                <Ionicons name = "md-compass" size = {24} /> 
-            }
-        }
+        navigationOptions: ({navigation}) => ({
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state;
+                let iconName;
+                if (routeName === 'Profile') {
+                  iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+                }
+                return <Ionicons name={iconName} size={25} color={tintColor} />;
+              },
+
+        }),
+        tabBarOptions: {
+            activeTintColor: 'tomato',
+            inactiveTintColor: 'gray',
+      },
     },
     Camera : {
         screen: Camera,
-        navigationOptions:{
-            tabBarLabel:'Camera',
-            tabBarIcon:()=> {
-                <Ionicons name = "md-compass" size = {24} /> 
-            }
-        }
+        navigationOptions: ({navigation}) => ({
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state;
+                let iconName;
+                if (routeName === 'Camera') {
+                  iconName = `ios-camera${focused ? '' : '-outline'}`;
+                }
+                return <Ionicons name={iconName} size={25} color={tintColor} />;
+              },
+
+        })
     }
 });
