@@ -1,6 +1,19 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera, Permissions } from 'expo';
+import {
+  Container,
+  Content,
+  Header,
+  Item,
+  Icon,
+  Input,
+  Button
+} from 'native-base';
+
+import {
+MaterialCommunityIcons
+} from 'react-native-vector-icons/';
 
 export default class CameraExample extends React.Component {
   state = {
@@ -12,8 +25,6 @@ export default class CameraExample extends React.Component {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
   }
-  
-
   render() {
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -23,8 +34,7 @@ export default class CameraExample extends React.Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
-          <Camera style={{ flex: 1 }} type={this.state.type}>
-
+          <Camera style={{ flex: 1, justifyContent:'space-between' }} type={this.state.type} ref={ref => { this.camera = ref; }}>
             <View
               style={{
                 flex: 1,
@@ -44,12 +54,23 @@ export default class CameraExample extends React.Component {
                       : Camera.Constants.Type.back,
                     });
                     }}>
-                    <Text
-                        style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>
-                        {' '}Flip{' '}
-                    </Text>
+                    <Icon name="ios-reverse-camera"
+                        style={{ fontWeight: 'bold', marginBottom: 10, color: 'white' }}>
+                    </Icon>
                 </TouchableOpacity>
-            
+                
+                <View style={{ 
+                  flexDirection:'row', 
+                  justifyContent:'space-between',
+                  paddingHorizontal: 10,
+                  marginBottom:15,
+                  alignItems:'flex-end' }} >
+                  <View style={{ alignItems:'center' }}>
+                      <MaterialCommunityIcons  name= "circle-outline" 
+                      style={{  color: 'white', fontSize :100 }} >
+                      </MaterialCommunityIcons>
+                  </View>
+                </View>
             </View>
           </Camera>
         </View>
